@@ -1,0 +1,18 @@
+.container{
+    width: 60vw !important;
+    margin-top: 20px;
+}
+
+.note{
+    padding: 10px !important;
+}
+
+.paper{
+    padding-top: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+    .container{
+        width: 100vw !important;
+    }
+}
