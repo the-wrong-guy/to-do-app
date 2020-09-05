@@ -1,10 +1,12 @@
 import {combineReducers}  from 'redux'
 import { firebaseReducer } from 'react-redux-firebase';
-import {firestoreReducer} from 'redux-firestore'
+import { firestoreReducer } from 'redux-firestore'
+import taskReducer from './taskReducers'
 
 const RootReducer = combineReducers({
     firebase : firebaseReducer,
-    firestore : firestoreReducer
+    firestore : firestoreReducer,
+    task : taskReducer
       
 })
 

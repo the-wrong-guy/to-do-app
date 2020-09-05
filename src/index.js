@@ -16,7 +16,7 @@ import {createFirestoreInstance} from 'redux-firestore'
  const rrfProps ={
    firebase,
    config:{},
-   dispatch : store.dispatch(),
+   dispatch : store.dispatch,
    createFirestoreInstance
  }
 

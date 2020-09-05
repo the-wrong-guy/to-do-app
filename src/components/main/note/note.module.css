@@ -5,6 +5,9 @@
 
 .note{
     padding: 10px !important;
+    width :100%;
+    line-break: auto;
+    word-break: break-all;
 }
 
 .paper{

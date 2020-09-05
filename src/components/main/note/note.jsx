@@ -8,7 +8,7 @@ const Note =()=>{
         <Container className={styles.container}>
             <Paper className={styles.paper}>
                 <div>
-                    <Typography className={styles.note} variant="medium" color="initial">Helllo sdadwadasdsadsadsa</Typography>
+                    <p className={styles.note}>Helllo sdadwadasdsadsadsa</p>
                 </div>
                 <div>
                 <Tooltip title="Delete">
