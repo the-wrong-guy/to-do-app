@@ -9,9 +9,9 @@ import {addTask} from '../../../Actions/action'
 import {connect} from 'react-redux'
 
 
-function Todo() {
+function Todo(props) {
     const [pinClick,setPinCLicked] = useState(false)
-    const [input,setInput] = useState("")
+    const [input,setInput] = useState('')
     const textareaRef = useRef(null);
     useEffect(() => {
         textareaRef.current.style.height = "0px";
@@ -20,8 +20,11 @@ function Todo() {
     }, [input]);
 
     const handleAddClick = () =>{
-        addTask(input)
-        console.log(input)
+        if(input !== ''){
+            props.addTask(input,pinClick)
+            console.log(input)
+        }
+        
         setInput("")
         setPinCLicked(false)
     }

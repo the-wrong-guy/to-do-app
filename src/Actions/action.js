@@ -5,7 +5,7 @@ export const addTask = (task) =>{
         firestore
         .collection("tasks")
         .add({
-            ...task,
+            task : task,
             date : new Date()
         })
         .then(()=>{

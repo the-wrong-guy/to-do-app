@@ -3,12 +3,12 @@ import {Paper,IconButton, Typography,Tooltip,Container} from '@material-ui/core'
 import {Delete as DeleteIcon,Bookmark as BookmarkIcon,BookmarkBorder as BookNotMarkIcon,AlarmOn as AlarmOnIcon,Edit as EditIcon} from '@material-ui/icons';
 import styles from './note.module.css'
 
-const Note =()=>{
+const Tasks =({task})=>{
     return(
         <Container className={styles.container}>
             <Paper className={styles.paper}>
                 <div>
-                    <p className={styles.note}>Helllo sdadwadasdsadsadsa</p>
+                    <p className={styles.note}>{task.task}</p>
                 </div>
                 <div>
                 <Tooltip title="Delete">
@@ -37,4 +37,5 @@ const Note =()=>{
     );
 }
 
-export default Note;
+export default Tasks;
+

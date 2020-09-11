@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@700&display=swap');
+
+.Pinnedtitle{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 25px;
+    padding-left: 10px;
+}
+.title:hover{
+   /* border-bottom: solid #acacac; */
+}
+
+.Unpinnedtitle{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 25px;
+    padding-left: 10px;
+}
+
+.container{
+    margin-top: 50px !important;
+    width: 60vw !important;
+    margin-top: 20px;
+    /* background-image: url("https://giphy.com/stickers/do-it-just-dont-quit-QvMoWXAAiU5V2IYyt1"); */
+}
+
+@media only screen and (max-width: 600px) {
+    .container{
+        width: 100vw !important;
+    }
+}
