@@ -1,6 +1,7 @@
 .container{
     width: 60vw !important;
-    margin-top: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .note{
@@ -9,14 +10,19 @@
     width :100%;
     line-break: auto;
     word-break: break-all;
+    margin: 0 !important;
+    background-color: rgb(228, 243, 97);
 }
 
-.paper{
+.options{
     /* padding-top: 10px; */
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(25, 196, 226);
 }
 
 @media only screen and (max-width: 600px) {
     .container{
-        width: 100vw !important;
+        width: 100% !important;
     }
 }

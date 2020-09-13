@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './App.css';
 import BackToTop from './components/main/App Bar/appbar'
 import Todo from './components/main/create note/main'
@@ -21,9 +21,11 @@ function App({tasks}) {
       {tasks ? (<Pinnned/>):('')}
       {tasks ? (tasks.map((task) => <Tasks task={task} key={task.id} />)) : (<TaskSkeleton/>)}
       {tasks ? (<Unpinned/>):('')}
+      
     </div>
   );
 }
+
 
 
 // For interating through Task

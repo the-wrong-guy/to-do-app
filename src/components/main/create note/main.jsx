@@ -1,5 +1,5 @@
 import React,{useState,useEffect,useRef} from 'react'
-import {Container,Tooltip,IconButton,Button, StylesProvider,Paper, TextField} from '@material-ui/core'
+import {Container,Tooltip,IconButton, StylesProvider,Paper,TextField} from '@material-ui/core'
 import TurnedInNotIcon from '@material-ui/icons/TurnedInNot';
 import TurnedInIcon from '@material-ui/icons/TurnedIn';
 import AddBoxIcon from '@material-ui/icons/AddBox';
@@ -63,7 +63,7 @@ function Todo(props) {
 
 const mapDispatchToProps = dispatch => {
     return{
-        addTask : (task) => dispatch(addTask(task))
+        addTask : (task,pinClick) => dispatch(addTask(task,pinClick))
     }
 }
 
