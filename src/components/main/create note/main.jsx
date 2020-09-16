@@ -12,6 +12,7 @@ import {connect} from 'react-redux'
 function Todo(props) {
     const [pinClick,setPinCLicked] = useState(false)
     const [input,setInput] = useState('')
+    const [checked,setChecked] = useState(false)
     const textareaRef = useRef(null);
     useEffect(() => {
         textareaRef.current.style.height = "0px";

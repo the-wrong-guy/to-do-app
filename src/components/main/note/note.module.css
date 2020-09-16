@@ -11,18 +11,19 @@
     line-break: auto;
     word-break: break-all;
     margin: 0 !important;
-    background-color: rgb(228, 243, 97);
+    /* background-color: rgb(228, 243, 97); */
 }
 
 .options{
     /* padding-top: 10px; */
     display: flex;
     justify-content: space-between;
-    background-color: rgb(25, 196, 226);
+    /* background-color: rgb(25, 196, 226); */
 }
 
 @media only screen and (max-width: 600px) {
     .container{
-        width: 100% !important;
+        width: 100vw !important;
     }
 }
+

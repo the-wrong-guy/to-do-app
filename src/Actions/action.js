@@ -45,3 +45,33 @@ export const removeTask = task =>{
         })
     }
 }
+
+export const toggleChecked = (task)=>{
+    return(dispatch,getState,{getFirebase})=>{
+        const firestore = getFirebase().firestore()
+        firestore
+        .collection('tasks')
+        .doc(task.id)
+        .set(
+            {
+                ...task,
+                checked : !task.checked
+            },
+            {
+                merge:true
+            }
+        )
+        .then(()=>{
+            dispatch({
+                type: "TOGGLE_CHECKED",
+                task
+            })
+        })
+        .catch((err)=>{
+            dispatch({
+                type: "TOGGLE_CHECKED_ERR",
+                err
+            }) 
+        })
+    }
+}

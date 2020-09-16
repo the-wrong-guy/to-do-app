@@ -16,6 +16,14 @@
              console.log("Remove task error")
              return state;
          }
+         case "TOGGLE_CHECKED" : {
+             console.log("A task status is changed...")
+             return state
+         }
+         case "TOGGLE_CHECKED_ERR" : {
+             console.log("A task status change error occured")
+             return state
+         }
          default : 
          return state
      }
