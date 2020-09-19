@@ -6,6 +6,7 @@ import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import styles from './appbar.module.css'
+import {connect} from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,7 +54,7 @@ ScrollTop.propTypes = {
   window: PropTypes.func,
 };
 
-export default function BackToTop(props) {
+function BackToTop(props) {
   return (
     <React.Fragment>
       <CssBaseline />
@@ -87,3 +88,10 @@ export default function BackToTop(props) {
     </React.Fragment>
   );
 }
+
+
+const mapStateToProps = (state) =>{
+  console.log(state)
+}
+
+export default connect(mapStateToProps)(BackToTop)

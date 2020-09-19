@@ -1,0 +1,31 @@
+.container {
+    height: 100vh;
+    width: 100%;
+    background-image: radial-gradient(
+      circle at center left,
+      rgb(207, 135, 220),
+      rgb(59, 104, 195)
+    );
+    display: grid !important;
+    place-items: center !important;
+  }
+  
+  .avatar {
+  }
+  
+  .paper {
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 20px;
+    /* margin-top: 5%; */
+    width: 400px;
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .paper {
+      width: 80vw;
+    }
+  }
+  

@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import RootReducer from './Reducers/rootReducers'
 import {Provider} from 'react-redux'
@@ -10,6 +9,7 @@ import thunk from 'redux-thunk'
 import {getFirebase,ReactReduxFirebaseProvider} from 'react-redux-firebase' 
 import firebase from './config/firebase'
 import {createFirestoreInstance} from 'redux-firestore'
+import Routes from './router'
 
  const store = createStore(RootReducer,applyMiddleware(thunk.withExtraArgument({getFirebase})))
 
@@ -24,7 +24,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <ReactReduxFirebaseProvider {...rrfProps}>
-        <App />
+        <Routes />
       </ReactReduxFirebaseProvider>  
     </Provider>
   </React.StrictMode>,

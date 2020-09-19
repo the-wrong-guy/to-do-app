@@ -19,9 +19,8 @@ function App({tasks}) {
       <BackToTop/>
       <Todo/>
       {tasks ? (<Pinnned/>):('')}
-      {tasks ? (tasks.map((task) => <Tasks task={task} key={task.id} />)) : (<TaskSkeleton/>)}
+      {tasks ? (tasks.map((task) => <Tasks task={task} key={task.id} />)) : (<><TaskSkeleton/><TaskSkeleton/><TaskSkeleton/></>)}
       {tasks ? (<Unpinned/>):('')}
-      
     </div>
   );
 }
