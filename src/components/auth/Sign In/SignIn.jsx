@@ -22,6 +22,7 @@ import { Link } from "react-router-dom";
 import styles from "./SignIn.module.css";
 import {signInAuth} from "../../../Actions/authAction"
 import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 
 function Copyright() {
   return (
@@ -66,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
 
   const handleSignIn = (event) => {
     event.preventDefault();
-    props.signInAuth(email,password)
+    signInAuth(email,password)
     console.log("sucess");
   };
 
@@ -77,6 +78,9 @@ const useStyles = makeStyles((theme) => ({
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
+
+  const { uid } = props
+  if(uid) return <Redirect to="/home"/>
 
   return (
     <div className={styles.container}>
@@ -160,10 +164,19 @@ const useStyles = makeStyles((theme) => ({
 }
 
 
+
+const mapStateToProps = (state) =>{
+  console.log(state)
+  const uid = state.firebase.auth.uid
+  console.log(uid)
+  return{
+    uid : uid
+  }
+}
 const mapDispatchToProps = dispatch =>{
   return{
     signIn : (email,password) => dispatch(signInAuth(email,password))
   }
 }
 
-export default connect(null,mapDispatchToProps)(SignIn)
+export default connect(mapStateToProps,mapDispatchToProps)(SignIn)
