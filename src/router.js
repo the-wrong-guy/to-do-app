@@ -7,9 +7,9 @@ import Main from './App'
 const Routes = () =>(
     <BrowserRouter>
         <Switch>
-            <Route exact  path='/' component={SignUp}/>
+            <Route exact  path='/' component={SignIn}/>
             <Route exact  path='/home' component={Main}/>
-            <Route exact  path='/signin' component={SignIn}/>
+            <Route exact  path='/sign-up' component={SignUp}/>
         </Switch>
     </BrowserRouter>
 )

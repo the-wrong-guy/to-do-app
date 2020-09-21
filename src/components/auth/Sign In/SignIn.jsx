@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
 
   const handleSignIn = (event) => {
     event.preventDefault();
-    signInAuth(email,password)
+    props.signInAuth(email,password)
     console.log("sucess");
   };
 
@@ -151,7 +151,7 @@ const useStyles = makeStyles((theme) => ({
               <Link to="/forgot">Forgot password?</Link>
             </Grid>
             <Grid item>
-              <Link to="/">{"Don't have an account? Sign Up"}</Link>
+              <Link to="/sign-up">{"Don't have an account? Sign Up"}</Link>
             </Grid>
           </Grid>
         </form>
@@ -175,7 +175,7 @@ const mapStateToProps = (state) =>{
 }
 const mapDispatchToProps = dispatch =>{
   return{
-    signIn : (email,password) => dispatch(signInAuth(email,password))
+    signInAuth : (email,password) => dispatch(signInAuth(email,password))
   }
 }
 

@@ -7,6 +7,8 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import styles from './appbar.module.css'
 import {connect} from 'react-redux'
+import {signOut} from '../../../Actions/authAction'
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,6 +57,9 @@ ScrollTop.propTypes = {
 };
 
 function BackToTop(props) {
+  if(!props.uid){
+    return <Redirect to="/" />
+  }
   return (
     <React.Fragment>
       <CssBaseline />
@@ -70,7 +75,7 @@ function BackToTop(props) {
               </IconButton>
             </Tooltip>
             <Tooltip title="Log out">
-              <IconButton aria-label="Log out">
+              <IconButton onClick={props.signOut} aria-label="Log out">
               <ExitToAppIcon/>
               </IconButton>
             </Tooltip>
@@ -89,9 +94,22 @@ function BackToTop(props) {
   );
 }
 
-
-const mapStateToProps = (state) =>{
-  console.log(state)
+const mapStateToProps = state =>{
+  const uid = state.firebase.auth.uid
+  return{
+    uid : uid
+  }
 }
+const mapDispatchToProps = (dispatch)=>{
+  return{
+    signOut : ()=> dispatch(signOut())
+  }
+} 
 
-export default connect(mapStateToProps)(BackToTop)
+
+
+// const mapStateToProps = (state) =>{
+//   console.log(state)
+// }
+
+export default connect(mapStateToProps,mapDispatchToProps)(BackToTop)

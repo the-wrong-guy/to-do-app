@@ -19,9 +19,10 @@ import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { Link } from "react-router-dom";
 import styles from "./SignUp.module.css";
-// import { db, auth } from "../../firebase";
-// import firebase from "firebase";
-// import Home from "../Home/Home";
+import {signUpAuth} from "../../../Actions/authAction"
+import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
+
 
 function Copyright() {
   return (
@@ -56,9 +57,8 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SignUp() {
+function SignUp(props) {
   const classes = useStyles();
-  const [user, setUser] = useState(null);
   const [fullname, setFullname] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -68,46 +68,6 @@ export default function SignUp() {
     showPassword: false
   });
 
-//   const signUp = (event) => {
-//     event.preventDefault();
-//     console.log("submitted");
-//     auth
-//       .createUserWithEmailAndPassword(email, password)
-//       .then((authUser) => {
-//         return authUser.user.updateProfile({
-//           displayName: username
-//         });
-//       })
-//       .catch((error) => alert(error.message));
-//     setFullname("");
-//     setEmail("");
-//     setPassword("");
-//     setUsername("");
-
-//     db.collection("All Users")
-//       .doc(`${username}`)
-//       .collection("user details")
-//       .add({
-//         fullName: fullname,
-//         username: username,
-//         AccountCreatedAt: firebase.firestore.FieldValue.serverTimestamp()
-//       });
-//  };
-
-//   useEffect(() => {
-//     const unsubscribe = auth.onAuthStateChanged((authUser) => {
-//       if (authUser) {
-//         console.log(authUser);
-//         setUser(authUser);
-//       } else {
-//         setUser(null);
-//       }
-//     });
-//     return () => {
-//       unsubscribe();
-//     };
-//   }, [user, username]);
-
   const handleClickShowPassword = () => {
     setValues({ ...values, showPassword: !values.showPassword });
   };
@@ -116,6 +76,14 @@ export default function SignUp() {
     event.preventDefault();
   };
 
+  const handleSignUp = (e) =>{
+    e.preventDefault()
+    props.signUpAuth(email,password)
+  }
+
+  if(props.uid){
+    return <Redirect to='/home' />
+  }
   return (
     <div className={styles.container}>
       <CssBaseline />
@@ -131,33 +99,6 @@ export default function SignUp() {
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
-                autoComplete="fname"
-                name="Name"
-                variant="outlined"
-                required
-                fullWidth
-                id="Name"
-                label="Name"
-                autoFocus
-                value={fullname}
-               
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="User Name"
-                name="UserName"
-                autoComplete="userName"
-                value={username}
-                
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
                 variant="outlined"
                 required
                 fullWidth
@@ -166,7 +107,7 @@ export default function SignUp() {
                 name="email"
                 autoComplete="email"
                 value={email}
-                
+                onChange={(e)=>setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -206,13 +147,13 @@ export default function SignUp() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            
+            onClick={handleSignUp}
           >
             Sign Up
           </Button>
           <Grid container justify="center">
             <Grid item>
-              <Link to="/signin">Already have an account? Sign in</Link>
+              <Link to="/">Already have an account? Sign in</Link>
             </Grid>
           </Grid>
         </form>
@@ -224,3 +165,19 @@ export default function SignUp() {
     </div>
   );
 }
+
+const mapStateToProps = (state) =>{
+  console.log(state)
+  const uid = state.firebase.auth.uid
+  console.log(uid)
+  return{
+    uid : uid
+  }
+} 
+const mapDispatchToProps = dispatch =>{
+  return{
+    signUpAuth : (email,password) => dispatch(signUpAuth(email,password))
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(SignUp)
